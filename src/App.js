@@ -61,12 +61,14 @@ class App extends Component {
         </form>   
         <ul className="task-list">
         {
-          self.todos.map(todo => {
+          self.todos
+          .sort((a, b) => a.id < b.id)
+          .map(todo => {
             return (
               <li className="task-item" key={ todo.id }>                
                 <span><input type="checkbox" onChange={this.completeTask.bind(null, todo.id)}/></span>
-                <span className={!todo.isCompleted || 'isDone'}>{ todo.task }</span>
-                <span><button onClick={this.removeTask.bind(null, todo.id )} disabled={!todo.isCompleted}>Excluir</button></span>
+                <span className={todo.isCompleted ? 'isDone' : ''}>{ todo.task }</span>
+                <span><button onClick={this.removeTask.bind(null, todo.id )} disabled={!todo.isCompleted.toString()}>Excluir</button></span>
               </li>
             )
           })
