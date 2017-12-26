@@ -68,7 +68,7 @@ class App extends Component {
               <li className="task-item" key={ todo.id }>                
                 <span><input type="checkbox" onChange={this.completeTask.bind(null, todo.id)}/></span>
                 <span className={todo.isCompleted ? 'isDone' : ''}>{ todo.task }</span>
-                <span><button onClick={this.removeTask.bind(null, todo.id )} disabled={!todo.isCompleted.toString()}>Excluir</button></span>
+                <span><button onClick={this.removeTask.bind(null, todo.id )} disabled={!todo.isCompleted}>✗</button></span>
               </li>
             )
           })
